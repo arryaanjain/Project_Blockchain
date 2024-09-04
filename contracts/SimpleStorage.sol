@@ -58,6 +58,16 @@ contract ArrayBasics {
 
     //for many many records, here is an array:
     People[] public people; //array obj
+
+    //next, mapping: mapping of data to a key, as in a dictionary
+    mapping(string => uint256) public nameToFavNum;
+
+    function addPerson(string memory _name, uint256 _favNum) public {
+        //memory keyword is used because calldata:immutable,temporary, memory:mutable,temporaray, storage:mutable,permanent
+        people.push(People({favNum: _favNum, name: _name}));
+        nameToFavNum[_name] = _favNum;
+    }
+
 }
 
 
